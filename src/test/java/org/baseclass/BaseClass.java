@@ -111,7 +111,7 @@ public class BaseClass {
 		}
 	}
 
-	public static void quit() {
+	public static void quitBrowser() {
 
 		d.quit();
 	}
