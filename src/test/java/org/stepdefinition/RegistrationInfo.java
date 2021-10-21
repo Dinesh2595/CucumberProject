@@ -1,6 +1,7 @@
 package org.stepdefinition;
 
 import org.baseclass.BaseClass;
+import org.loginpage.FacebookLogin;
 import org.loginpage.RegistrationPage;
 
 import io.cucumber.java.en.Given;
@@ -9,6 +10,7 @@ import io.cucumber.java.en.When;
 
 public class RegistrationInfo extends BaseClass {
 	RegistrationPage r;
+	FacebookLogin l;
 
 	@Given("the user navigate to the facebook home page")
 	public void the_user_navigate_to_the_facebook_home_page() {
@@ -41,6 +43,28 @@ public class RegistrationInfo extends BaseClass {
 	public void user_click_the_signup_button() {
 		click(r.getSignup());
 		System.out.println("Registered With Invalid Credential");
+	}
+
+//                 "Scenario 2"
+	
+	@When("the user fill the username and password")
+	public void the_user_fill_the_username_and_password() {
+		l = new FacebookLogin();
+		fillTextBox(l.getUser(), "kumar");
+		fillTextBox(l.getPass(), "787878");
+	}
+
+	@When("the user click the login button")
+	public void the_user_click_the_login_button() {
+		click(l.getLogin());
+
+	}
+
+	@Then("user navigate to the invalid login page")
+	public void user_navigate_to_the_invalid_login_page() {
+
+		quitBrowser();
+		System.out.println("Login in invalid credintials");
 	}
 
 }
